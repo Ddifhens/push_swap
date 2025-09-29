@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:03:24 by user              #+#    #+#             */
-/*   Updated: 2025/09/29 16:21:40 by user             ###   ########.fr       */
+/*   Updated: 2025/09/29 18:08:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,27 @@
 
 int	*makenbrs(char *args)
 {
+	int		*a;
 	char	**list;
-	int		**nbr;
-	int		size;
-	char	*l_ptr;
-	int		*n_ptr;
+	int		*a_p;
 
-	size = ft_strlen(args);
-	list = ft_split(args, size);
-	nbr = ft_calloc(size, sizeof (int *));
-	n_ptr = *nbr;
-	l_ptr = *list;
-	while(*list)
-		*n_ptr++ = ft_atoi((const char)*l_ptr++);
-
+	a = ft_calloc(2, sizeof (int));
+	a_p = a;
+	list = ft_split(args, 32);
+	while (*list)
+	{
+		*a++ = (ft_atoi(*list++));
+	}
+	return(a_p);
 }
 
 int main(int argc, char **argv)
 {
-	int	*nbrs;
-	int	i;
+	int	*args;
 
-	i = 0;
-	if (argc < 2)
+	if (argc != 2 || (checkargs(argv[1])) == 0)
 		return (write(2,"ERROR\n", 6), INV_PAR);
-	nbrs = makenbrs(argv[1]);
-	while (i < (ft_strlen(nbrs)))
-		ft_printf("%d", nbrs[i++]);
+	args = makenbrs(argv[1]);
+	while (*args)
+		ft_printf("%d\n", *args++);
 }

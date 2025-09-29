@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/09/29 15:59:53 by user             ###   ########.fr       */
+/*   Updated: 2025/09/29 17:54:03 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <stdlib.h>
 
 char	**ft_freeall( char **save);
+int	checkargs(char *s1);
 
 #endif

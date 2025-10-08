@@ -36,7 +36,7 @@ $(NAME): all
 all: $(BUILD_DIR)$(LIBFT) $(BUILD_DIR)$(PRT) $(PSH) 
 
 $(BUILD_DIR)$(LIBFT):
-	@make -C $(LIBFT_DIR)
+	@make bonus -C $(LIBFT_DIR)
 	$(DIR_GUARD)
 	cp $(LIBFT_DIR)$(LIBFT) $(BUILD_DIR)
 	@echo "\n$(BLUE)==========          Compiled Libft          ==========$(END)\n"

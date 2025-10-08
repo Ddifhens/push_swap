@@ -13,8 +13,12 @@ BC_FILES= ft_lstadd_front_bonus ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back
 BONUS:= $(addprefix $(SRC_DIR), $(addsuffix .c, $(BC_FILES)))
 SRCS:= $(addprefix $(SRC_DIR), $(addsuffix .c, $(C_FILES)))
 OBJS:= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(C_FILES)))
+BOJS:= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(BC_FILES)))
 
 all: $(NAME)
+
+bonus : $(OBJS) $(BOJS) 
+	ar rsc $(NAME) $(OBJS) $(BOJS)
 
 $(NAME): $(OBJS)
 	ar rsc $(NAME) $(OBJS) 
@@ -26,7 +30,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) -g $(CFLAGS) -I$(INC) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

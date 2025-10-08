@@ -14,12 +14,13 @@
 
 int	ft_isspace(int c)
 {
-	if (!c)
-		return (0);
-	if (!(c == 32) || (c < 9 && c > 13))
-		return (0);
-	else
+	char	a;
+
+	a = c;
+	if ((a == 32) || (c <= 9 && c >= 13))
 		return (10);
+	else
+		return (0);
 }
 
 int	checkargs(char *s1)
@@ -29,7 +30,9 @@ int	checkargs(char *s1)
 	p = s1;
 	while (*p)
 	{
-		if (!(ft_isdigit(*p) && !(ft_isspace(*p))))
+		if (*p == '-')
+			p++;
+		if (((ft_isdigit(*p)) == 0) && ((ft_isspace(*p)) == 0))
 			return (0);
 		p++;
 	}
@@ -49,4 +52,44 @@ char	**ft_freeall( char **save)
 	}
 	free(temp);
 	return (NULL);
+}
+
+void	ft_sort_int_tab(int *tab, unsigned int size)
+{
+	unsigned int	i;
+	int	temp;
+
+	i = 0;
+	while (i < (size - 1))
+	{
+		if (tab[i] > tab[i + 1])
+		{
+			temp = tab[i];
+			tab[i] = tab[i+ 1];
+			tab[i + 1] = temp;
+			i = 0;
+		}
+		else
+		i++;
+	}
+}
+
+int		ft_wordcount(char const *str, char sep)
+{
+	int i;
+	int count;
+
+	if (str == 0 || str[0] == 0)
+		return (0);
+	i = 1;
+	count = 0;
+	if (str[0] != sep)
+		count++;
+	while (str[i] != '\0')
+	{
+		if (str[i] != sep && str[i - 1] == sep)
+			count++;
+		i++;
+	}
+	return (count);
 }

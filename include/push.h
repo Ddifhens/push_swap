@@ -21,5 +21,7 @@
 
 char	**ft_freeall( char **save);
 int	checkargs(char *s1);
+void	ft_sort_int_tab(int *tab, unsigned int size);
+int		ft_wordcount(char const *str, char sep);
 
 #endif

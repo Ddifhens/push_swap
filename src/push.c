@@ -12,6 +12,11 @@
 
 #include "push.h"
 
+/*char	*simplify(int *)
+{
+
+}*/
+
 int	*makenbrs(char *args)
 {
 	int		*a;
@@ -31,10 +36,16 @@ int	*makenbrs(char *args)
 int main(int argc, char **argv)
 {
 	int	*args;
+	int	*p;
+	int	length;
 
+	length = ft_wordcount(argv[1], ' ');
 	if (argc != 2 || (checkargs(argv[1])) == 0)
 		return (write(2,"ERROR\n", 6), INV_PAR);
 	args = makenbrs(argv[1]);
+	p = args;
+	ft_sort_int_tab(args, length);
 	while (*args)
 		ft_printf("%d\n", *args++);
+	args = p;
 }

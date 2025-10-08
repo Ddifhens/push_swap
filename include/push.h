@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/09/29 17:54:03 by user             ###   ########.fr       */
+/*   Updated: 2025/10/08 20:02:44 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,14 @@ char	**ft_freeall( char **save);
 int	checkargs(char *s1);
 void	ft_sort_int_tab(int *tab, unsigned int size);
 int		ft_wordcount(char const *str, char sep);
+int	ft_isspace(int c);
+
+typedef	struct {
+	int tail;
+	int	head;
+	int	count;
+	int	capacity;
+	int buffer[];
+} circbuf ;
 
 #endif

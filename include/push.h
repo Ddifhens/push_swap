@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/10/08 20:02:44 by user             ###   ########.fr       */
+/*   Updated: 2025/12/05 14:23:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@
 # include "ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
+# include <stdbool.h>
 
-char	**ft_freeall( char **save);
-int	checkargs(char *s1);
-void	ft_sort_int_tab(int *tab, unsigned int size);
-int		ft_wordcount(char const *str, char sep);
-int	ft_isspace(int c);
+//node declaration
 
-typedef	struct {
-	int tail;
-	int	head;
-	int	count;
-	int	capacity;
-	int buffer[];
-} circbuf ;
+typedef struct node
+{
+	int				nbr;
+	int				index;
+	int				cost;
+	bool			above_median;
+	bool			cheapest;
+	struct node		*targ;
+	struct node		*next;
+	struct node		*prev;
+}					t_node;
 
 #endif

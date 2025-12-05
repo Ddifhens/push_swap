@@ -12,7 +12,3 @@
 
 #include "push.h"
 
-circbuf *initialize(circbuf * cb, int size, int *storage, int capacity)
-{
-	
-}

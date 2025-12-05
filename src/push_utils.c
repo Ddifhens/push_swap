@@ -6,90 +6,31 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:38:07 by user              #+#    #+#             */
-/*   Updated: 2025/09/29 18:11:23 by user             ###   ########.fr       */
+/*   Updated: 2025/12/05 17:32:59 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int	ft_isspace(int c)
+void	init_stack(t_node **a, char **av)
 {
-	char	a;
-
-	a = c;
-	if ((a == 32) || (c <= 9 && c >= 13))
-		return (10);
-	else
-		return (0);
-}
-
-int	checkargs(char *s1)
-{
-	char *p;
-
-	p = s1;
-	while (*p)
-	{
-		if (*p == '-')
-			p++;
-		if (((ft_isdigit(*p)) == 0) && ((ft_isspace(*p)) == 0))
-			return (0);
-		p++;
-	}
-	return (1);
-}
-char	**ft_freeall( char **save)
-{
-	char	**temp;
-
-	temp = save;
-	while (1)
-	{
-		if (!*save)
-			break ;
-		free(*save);
-		save++;
-	}
-	free(temp);
-	return (NULL);
-}
-
-void	ft_sort_int_tab(int *tab, unsigned int size)
-{
-	unsigned int	i;
-	int	temp;
+	long	x;
+	int		i;
 
 	i = 0;
-	while (i < (size - 1))
+	while (av[i])
 	{
-		if (tab[i] > tab[i + 1])
-		{
-			temp = tab[i];
-			tab[i] = tab[i+ 1];
-			tab[i + 1] = temp;
-			i = 0;
-		}
-		else
-		i++;
-	}
-}
+		if ((invalid_digit(av[i]))
+			//call function to properly handle stack errors
+		x = ft_atol(av[i]);	
+		if(duplicate(av[i], (int)x))
+			//call function to properly handle stack errors
 
-int		ft_wordcount(char const *str, char sep)
-{
-	int i;
-	int count;
-
-	if (str == 0 || str[0] == 0)
-		return (0);
-	i = 1;
-	count = 0;
-	if (str[0] != sep)
-		count++;
-	while (str[i] != '\0')
-	{
-		if (str[i] != sep && str[i - 1] == sep)
-			count++;
-		i++;
+	// for all values of av[i]
+	//check proper int values formatting and size 
+	//check for duplicates
+	//
+	//for each proper value use functions to create new node, 
+	//assign proper value and append it to the end of a
 	}
-	return (count);
 }

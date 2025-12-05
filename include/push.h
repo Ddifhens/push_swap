@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/12/05 14:23:23 by user             ###   ########.fr       */
+/*   Updated: 2025/12/05 16:46:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdbool.h>
 
 //node declaration
-
 typedef struct node
 {
 	int				nbr;
@@ -34,5 +33,12 @@ typedef struct node
 	struct node		*next;
 	struct node		*prev;
 }					t_node;
+
+//argument checking
+int	invalid_digit(char *val);
+int	duplicate(int *val, t_node *a);
+
+//stack operations
+void	init_stack(t_node **a, char **av);
 
 #endif

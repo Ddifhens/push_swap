@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   errorcheck.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 15:03:24 by user              #+#    #+#             */
-/*   Updated: 2025/12/05 16:21:41 by user             ###   ########.fr       */
+/*   Created: 2025/12/05 16:15:46 by user              #+#    #+#             */
+/*   Updated: 2025/12/05 16:50:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int main(int ac, char **av)
+int	invalid_digit(char *val)
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (ac == 1 || (ac == 2 && !av[1][0]))
+	if (!(*val == '+' || *val == '-' || (ft_isdigit(*val))))
 		return (write(2, "Error\n", 6), 1);
-	// implement solution for ac > 2
-	if (ac == 2)
-		av = ft_split(av[1], ' ');
-	while (*av)
+	if ((*val == '+' || *val == '-') && !(ft_isdigit(val[1])))
+		return (write(2, "Error\n", 6), 1);
+	while (*++val)
+		if (!(ft_isdigit(*val)))
+			return (write(2, "Error\n", 6), 1);
+	return (0);
+}
+
+int	duplicate(int *val, t_node *a)
+{
+	if (!a)
+		return (0);
+	while (a)
 	{
-		ft_printf("%s\n", *av);
-		av++;
-	}	
-	return(0);
-
-
-	// split() av[2] ' ' -> av 
-	// init stack a
-	// if not sorted
-	//		if == 2 -> sa
-	//		if == 3 -> sort 3 
-	//		if > 3 -> sort turk 
-	// clear stack 
-	// return 
+		if (a->nbr == *val)
+			return (write(2, "Error\n", 6), 1);
+		a = a->next;
+	}
+	return (0);
 }

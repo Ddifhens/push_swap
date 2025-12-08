@@ -12,6 +12,34 @@
 
 #include "push.h"
 
+bool	issorted(t_node *stack)
+{
+	if (!stack)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->next->nbr < stack->nbr)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
+}
+
+int	stack_len(t_node *stack)
+{
+	int	i;
+
+	if (!stack)
+		return (0);
+	i = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
+}
+
 int main(int ac, char **av)
 {
 	t_node	*a;
@@ -24,20 +52,16 @@ int main(int ac, char **av)
 	// implement solution for ac > 2
 	if (ac == 2)
 		av = ft_split(av[1], ' ');
-	while (*av)
+	init_stack(&a, av + 1);
+	if (!issorted(a))
 	{
-		ft_printf("%s\n", *av);
-		av++;
-	}	
-	return(0);
-
-
-	// split() av[2] ' ' -> av 
-	// init stack a
-	// if not sorted
-	//		if == 2 -> sa
-	//		if == 3 -> sort 3 
-	//		if > 3 -> sort turk 
-	// clear stack 
-	// return 
+		if (stack_len(a) == 2)
+			//swap the two
+		if (stack_len(a) == 3)
+			//sort threes
+		else
+			//sort
+	}
+	free_stack(&a);
+	return ;
 }

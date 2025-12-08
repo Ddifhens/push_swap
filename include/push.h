@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/12/05 16:46:43 by user             ###   ########.fr       */
+/*   Updated: 2025/12/08 12:19:39 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <limits.h>
 
 //node declaration
 typedef struct node
@@ -36,7 +37,11 @@ typedef struct node
 
 //argument checking
 int	invalid_digit(char *val);
-int	duplicate(int *val, t_node *a);
+int	duplicate(int val, t_node *a);
+
+//utilities
+long	ft_atol(const char *nptr);
+void	ft_spiterror(t_node **stck, int ec);
 
 //stack operations
 void	init_stack(t_node **a, char **av);

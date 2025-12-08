@@ -6,31 +6,54 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:38:07 by user              #+#    #+#             */
-/*   Updated: 2025/12/05 17:32:59 by user             ###   ########.fr       */
+/*   Updated: 2025/12/08 12:48:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
+void	append_node(t_node **stck, int n)
+{
+	t_node *new;
+	t_node *tmp;
+
+	if (!stck)
+		return ;
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return ;
+	new->next = NULL;
+	new->nbr = n;
+	new->cheapest = 0;
+	if (!(*stck))
+	{
+		*stck = new;
+		new->prev = NULL;
+	}
+	else
+	{
+		tmp = ft_nodelast(*stck);
+		tmp->next = new;
+		new->prev = tmp;
+	}
+}
+
 void	init_stack(t_node **a, char **av)
 {
-	long	x;
+	long	n;
 	int		i;
 
 	i = 0;
 	while (av[i])
 	{
-		if ((invalid_digit(av[i]))
-			//call function to properly handle stack errors
-		x = ft_atol(av[i]);	
-		if(duplicate(av[i], (int)x))
-			//call function to properly handle stack errors
-
-	// for all values of av[i]
-	//check proper int values formatting and size 
-	//check for duplicates
-	//
-	//for each proper value use functions to create new node, 
-	//assign proper value and append it to the end of a
+		if ((invalid_digit(av[i])))
+			ft_spiterror(a, 3);
+		n = ft_atol(av[i]);	
+		if (n > INT_MAX || n < INT_MIN)
+			ft_spiterror(a, 3);
+		if(duplicate((int)n, *a))
+			ft_spiterror(a, 3);
+		append_node(a, (int)n);
+		i++;
 	}
 }

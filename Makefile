@@ -8,7 +8,7 @@ DIR_GUARD=@mkdir -p $(@D)
 PSH=push_swap
 
 #FILE AND DIRECTORIES VARIABLES
-C_FILES=push push_utils buff_utils
+C_FILES=push push_utils errorcheck addendum swap rotate reverse stackops pushops
 SRC_DIR:=src/
 OBJ_DIR:=obj/
 LIB:=lib/

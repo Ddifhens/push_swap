@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:03:24 by user              #+#    #+#             */
-/*   Updated: 2025/12/05 16:21:41 by user             ###   ########.fr       */
+/*   Updated: 2025/12/13 14:49:52 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ int	stack_len(t_node *stack)
 	return (i);
 }
 
+void	sorthree(t_node **a)
+{
+	t_node	*max;
+
+	max = find_max(*a);
+	if (max == *a)
+		ra(a, true);
+	else if ((*a)->next == max)
+		rra(a, true);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a, true);
+}
+
 int main(int ac, char **av)
 {
 	t_node	*a;
@@ -49,19 +62,18 @@ int main(int ac, char **av)
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (write(2, "Error\n", 6), 1);
-	// implement solution for ac > 2
-	if (ac == 2)
+	else if (ac == 2)
 		av = ft_split(av[1], ' ');
-	init_stack(&a, av + 1);
+	init_stack(&a, av);
 	if (!issorted(a))
 	{
 		if (stack_len(a) == 2)
-			//swap the two
+			sa(&a, true);
 		if (stack_len(a) == 3)
-			//sort threes
+			sorthree(&a);
 		else
-			//sort
+			sortall(&a,&b);
 	}
 	free_stack(&a);
-	return ;
+	return (0) ;
 }

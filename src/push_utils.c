@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:38:07 by user              #+#    #+#             */
-/*   Updated: 2025/12/08 12:48:41 by user             ###   ########.fr       */
+/*   Updated: 2025/12/13 15:17:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,40 @@ void	init_stack(t_node **a, char **av)
 			ft_spiterror(a, 3);
 		append_node(a, (int)n);
 		i++;
+	}
+}
+
+t_node	*find_max(t_node *a)
+{
+	long	max;
+	t_node	*pointer;
+
+	if (!a)
+		return (NULL);
+	max = LONG_MIN;
+	while (a)
+	{
+		if (a->nbr > max)
+		{
+			max = a->nbr;
+			pointer = a;
+		}
+		a = a->next;
+	}
+	return (pointer);
+}
+
+void	sortall(t_node **a, t_node **b)
+{
+	int	len;
+
+	len = stcklen(*a);
+	if (len-- > 3 && !(issorted(*a)))
+		pb(b, a, true);
+	if (len-- > 3 && !(issorted(*a)))
+		pb(b, a, true);
+	while (len-- > 3 && !(issorted(*a)))
+	{
+
 	}
 }

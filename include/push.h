@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/12/13 15:12:44 by user             ###   ########.fr       */
+/*   Updated: 2025/12/19 15:01:01 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,25 @@ long	ft_atol(const char *nptr);
 void	ft_spiterror(t_node **stck, int ec);
 t_node	*ft_nodelast(t_node *lst);
 t_node	*find_max(t_node *a);
+t_node	*find_min(t_node *stack);
 bool	issorted(t_node *stack);
+t_node	*get_cheapest(t_node *stack);
+void	current_index(t_node *a);
+void	min_on_top(t_node **a);
 
 //stack operations
 void	init_stack(t_node **a, char **av);
 void	free_stack(t_node **stck);
 void	sortall(t_node **a, t_node **b);
 int		stcklen(t_node *a);
+void	init_nodes_a(t_node *a, t_node *b);
+void	move_a_to_b(t_node **a, t_node **b);
+void	sorthree(t_node **a);
+void	init_nodes_b(t_node *a, t_node *b);
+void	move_b_to_a(t_node **a, t_node **b);
+void	preppush(t_node **stack, t_node *node, char name);
+void	move_a_to_b(t_node **a, t_node **b);
+
 
 //push_swap operations
 //push

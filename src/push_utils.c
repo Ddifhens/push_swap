@@ -6,11 +6,31 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 15:38:07 by user              #+#    #+#             */
-/*   Updated: 2025/12/13 15:17:46 by user             ###   ########.fr       */
+/*   Updated: 2025/12/19 15:00:32 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
+
+t_node	*find_min(t_node *stack)
+{
+	long	min;
+	t_node	*found;
+
+	if (!stack)
+		return (NULL);
+	min = LONG_MAX;
+	while (stack)
+	{
+		if (stack->nbr < min)
+		{
+			min = stack->nbr;
+			found = stack;
+		}
+		stack = stack->next;
+	}
+	return (found);
+}
 
 void	append_node(t_node **stck, int n)
 {
@@ -89,6 +109,15 @@ void	sortall(t_node **a, t_node **b)
 		pb(b, a, true);
 	while (len-- > 3 && !(issorted(*a)))
 	{
-
+		init_nodes_a(*a, *b);
+		move_a_to_b(a, b);
 	}
+	sorthree(a);
+	while(*b)
+	{
+		init_nodes_b(*a, *b);
+		move_b_to_a(a, b);
+	}
+	current_index(*a);
+	min_on_top(a);
 }

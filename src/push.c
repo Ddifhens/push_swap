@@ -53,6 +53,25 @@ void	sorthree(t_node **a)
 		sa(a, true);
 }
 
+char	**createparams(char **av, int ac)
+{
+	char	*str;
+	char	*space;
+	int		i;
+
+	str = "";
+	space = " ";
+	i = 1;
+	while (ac)
+	{
+		str = ft_strjoin(str, av[i++]);
+		str = ft_strjoin(str, space);
+		ac--;
+	}
+	av = ft_split(str, ' ');
+	return (av);
+}
+
 int main(int ac, char **av)
 {
 	t_node	*a;
@@ -62,8 +81,8 @@ int main(int ac, char **av)
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (write(2, "Error\n", 6), 1);
-	else if (ac == 2)
-		av = ft_split(av[1], ' ');
+	else if (ac >= 2)
+		av = createparams(av, ac - 1);
 	init_stack(&a, av);
 	if (!issorted(a))
 	{

@@ -6,31 +6,24 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 13:02:31 by user              #+#    #+#             */
-/*   Updated: 2025/12/19 14:21:42 by user             ###   ########.fr       */
+/*   Updated: 2026/01/05 20:48:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	current_index(t_node *a)
+void	move_a_to_b(t_node **a, t_node **b)
 {
-	int	mid;
-	int index;
+	t_node	*cheapest;
 
-	index = 0;
-	if (!a)
-		return ;
-	mid = (stcklen(a)) / 2;
-	while (a)
-	{
-		a->index = index;
-		if (index >= mid)
-			a->above_median = true;
-		else
-			a->above_median = false;
-		a = a->next;
-		index++;
-	}
+	cheapest = get_cheapest(*a);
+	if (cheapest->above_median && cheapest->targ->above_median)
+		rotate_both(a, b, cheapest, false);
+	else if (!(cheapest->above_median) && !(cheapest->targ->above_median))
+			rotate_both(a, b, cheapest, true);
+	preppush(a, cheapest, 'a');
+	preppush(b, cheapest->targ, 'b');
+	pb(b, a, true);
 }
 
 void	set_target_a(t_node *a, t_node *b)
@@ -45,7 +38,7 @@ void	set_target_a(t_node *a, t_node *b)
 		current_node = b;
 		while (current_node)
 		{
-			if (current_node->nbr > a->nbr && current_node->nbr < match)
+			if (current_node->nbr < a->nbr && current_node->nbr > match)
 			{
 				match = current_node->nbr;
 				target = current_node;

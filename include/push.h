@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:29:11 by user              #+#    #+#             */
-/*   Updated: 2025/12/19 15:01:01 by user             ###   ########.fr       */
+/*   Updated: 2026/01/05 20:44:48 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	init_nodes_b(t_node *a, t_node *b);
 void	move_b_to_a(t_node **a, t_node **b);
 void	preppush(t_node **stack, t_node *node, char name);
 void	move_a_to_b(t_node **a, t_node **b);
+void	rotate_both(t_node **a, t_node **b, t_node *cheapest, bool rev);
 
 
 //push_swap operations

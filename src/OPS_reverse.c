@@ -16,7 +16,7 @@ void	reverse(t_node **stack)
 {
 	t_node	*last;
 
-	if (!*stack || (*stack)->next)
+	if (!*stack || !(*stack)->next)
 		return ;
 	last = ft_nodelast(*stack);
 	last->prev->next = NULL;

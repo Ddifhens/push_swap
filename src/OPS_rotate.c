@@ -6,7 +6,7 @@
 /*   By: user <user@student.42school.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 14:06:42 by user              #+#    #+#             */
-/*   Updated: 2025/12/13 14:42:21 by user             ###   ########.fr       */
+/*   Updated: 2026/01/05 20:38:38 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ void	rotate(t_node **a)
 	(*a)->prev = NULL;
 	pointer->next->prev = pointer;
 	pointer->next->next = NULL;
+}
+
+void	rotate_both(t_node **a, t_node **b, t_node *cheapest, bool rev)
+{
+	while (*b != cheapest->targ && *a != cheapest)
+	{
+		if (rev)
+			rrr(a, b, true);
+		else
+			rr(a, b, true);
+	}
+	current_index(*a);
+	current_index(*b);
 }
 
 void	ra(t_node **a, bool print)

@@ -16,19 +16,28 @@ char	**createparams(char **av, int ac)
 {
 	char	*str;
 	char	*space;
+	char	*ptr;
 	int		i;
+	char	**sstr;
 
-	str = "";
 	space = " ";
+	str = "\0";
 	i = 1;
 	while (ac)
 	{
-		str = ft_strjoin(str, av[i++]);
+		ptr = str;
+		str = ft_strjoin("", av[i++]);
+		if (*ptr)
+			free(ptr);
+		ptr = str;
 		str = ft_strjoin(str, space);
+		if (*ptr)
+			free(ptr);
 		ac--;
 	}
-	av = ft_split(str, ' ');
-	return (av);
+	sstr = ft_split(str, ' ');
+	free(str);
+	return (sstr);
 }
 
 int main(int ac, char **av)
@@ -53,5 +62,6 @@ int main(int ac, char **av)
 			sortall(&a,&b);
 	}
 	free_stack(&a);
+	free_chars(av);
 	return (0) ;
 }

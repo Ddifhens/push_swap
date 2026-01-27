@@ -48,3 +48,20 @@ t_node	*ft_nodelast(t_node *lst)
 		lst = lst->next;
 	return (lst);
 }
+
+char	**free_chars(char **save)
+{
+	char	**marcemon;
+
+	marcemon = save;
+	while (1)
+	{
+		if (!*save)
+			break ;
+		free(*save);
+		save++;
+	}
+	free(marcemon);
+	save = NULL;
+	return (save);
+}

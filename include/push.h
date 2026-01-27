@@ -49,6 +49,7 @@ bool	issorted(t_node *stack);
 t_node	*get_cheapest(t_node *stack);
 void	current_index(t_node *a);
 void	min_on_top(t_node **a);
+char	**free_chars(char **save);
 
 //stack operations
 void	init_stack(t_node **a, char **av);

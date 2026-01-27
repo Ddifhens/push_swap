@@ -47,12 +47,21 @@ void	init_stack(t_node **a, char **av)
 	while (av[i])
 	{
 		if ((invalid_digit(av[i])))
+		{
+			free_chars(av);
 			ft_spiterror(a, 3);
+		}
 		n = ft_atol(av[i]);	
 		if (n > INT_MAX || n < INT_MIN)
+		{
+			free_chars(av);
 			ft_spiterror(a, 3);
+		}
 		if(duplicate((int)n, *a))
+		{
+			free_chars(av);
 			ft_spiterror(a, 3);
+		}
 		append_node(a, (int)n);
 		i++;
 	}
